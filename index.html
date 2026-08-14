@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard การยกระดับคุณภาพสถานพัฒนาเด็กปฐมวัย</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="dashboard-layout">
+    <aside class="sidebar">
+      <div class="brand-block">
+        <div class="brand-mark">G3</div>
+        <div class="brand-copy">
+          <p class="brand-label">Center Analytics</p>
+          <h2>Dashboard</h2>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a class="nav-item active" href="#overview">Overview</a>
+        <a class="nav-item" href="#filters">Filters</a>
+        <a class="nav-item" href="#executive-board">Executive</a>
+        <a class="nav-item" href="#ranking">Ranking</a>
+        <a class="nav-item" href="#trend">Trend</a>
+        <a class="nav-item" href="#insight">Insights</a>
+        <a class="nav-item" href="#table">Tracking</a>
+      </nav>
+
+      <div class="sidebar-card">
+        <span>Source Sheet</span>
+        <strong id="source-sheet">improvement_indicators</strong>
+        <small>Anonymous center-level monitoring view</small>
+      </div>
+
+      <div class="sidebar-mini-chart">
+        <div class="mini-bars">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <p>Executive monitoring view for policy prioritization.</p>
+      </div>
+    </aside>
+
+    <main class="page-shell">
+      <header class="hero" id="overview">
+        <div class="hero-copy surface">
+          <div class="hero-topline">
+            <div>
+              <p class="eyebrow">Policy Monitoring Dashboard</p>
+              <h1>การยกระดับคุณภาพสถานพัฒนาเด็กปฐมวัยให้เป็นไปตามมาตรฐานสถานพัฒนาเด็กปฐมวัยแห่งชาติ</h1>
+            </div>
+            <div class="hero-badge">Pastel View</div>
+          </div>
+          <p class="lede">
+            Dashboard นี้ใช้ข้อมูลจาก sheet <strong>improvement_indicators</strong> เพื่อช่วยคัดกรองและจัดลำดับการติดตาม
+            โดยแสดงผลด้วย <strong>center_code_anon</strong> เท่านั้น และไม่ใช่ผลรับรองอย่างเป็นทางการ
+          </p>
+        </div>
+
+        <div class="hero-note surface">
+          <div class="note-card emphasis">
+            <span class="note-label">วันที่ปรับปรุง</span>
+            <strong id="generated-at">-</strong>
+          </div>
+          <div class="note-card">
+            <span class="note-label">จำนวนโรงเรียนทั้งหมด</span>
+            <strong id="total-records">-</strong>
+          </div>
+          <div class="note-card pass-fail-summary">
+            <span class="note-label">ผลการประเมิน</span>
+            <strong id="header-pass-rate">-</strong>
+            <small id="header-fail-rate">-</small>
+          </div>
+          <div class="note-card alert-summary">
+            <span class="note-label">ควรเร่งทบทวน</span>
+            <strong id="header-quality-d">-</strong>
+            <small id="header-assessed-records">-</small>
+          </div>
+        </div>
+      </header>
+
+      <section class="filters-panel surface" id="filters">
+        <div class="filter-block">
+          <div class="filter-title-row">
+            <h2>ปีการศึกษาที่ประเมิน</h2>
+            <button id="reset-years" class="ghost-button" type="button">เลือกทุกปี</button>
+          </div>
+          <div id="year-filters" class="chip-group"></div>
+        </div>
+        <div class="filter-block">
+          <div class="filter-title-row">
+            <h2>ระดับคุณภาพ</h2>
+            <button id="reset-quality" class="ghost-button" type="button">เลือกทุกระดับ</button>
+          </div>
+          <div id="quality-filters" class="chip-group"></div>
+        </div>
+      </section>
+
+      <section class="executive-board surface" id="executive-board">
+        <div class="executive-board-header">
+          <div>
+            <p class="eyebrow">Executive Situation Room</p>
+            <h2>ภาพรวมเชิงบริหารเพื่อยกระดับมาตรฐานสถานพัฒนาเด็กปฐมวัยแห่งชาติ</h2>
+            <p>สรุปสถานการณ์ แนวโน้ม ความแตกต่าง ประเด็นปัญหา และกลุ่มที่ควรดำเนินการ โดยคำนวณจากข้อมูลจริงภายใต้ตัวกรองปัจจุบัน</p>
+          </div>
+          <div class="executive-target">
+            <span>Benchmark</span>
+            <strong>95%</strong>
+            <small>ค่า benchmark เพื่อเปรียบเทียบเชิงนโยบาย ไม่ใช่ค่ารับรองอย่างเป็นทางการ</small>
+          </div>
+        </div>
+
+        <div class="exec-status-grid">
+          <article class="exec-status-card positive">
+            <span>ผ่านเกณฑ์</span>
+            <strong id="exec-pass-percent">-</strong>
+            <small id="exec-pass-count">-</small>
+          </article>
+          <article class="exec-status-card warning">
+            <span>เฝ้าระวัง</span>
+            <strong id="exec-watch-percent">-</strong>
+            <small id="exec-watch-count">-</small>
+          </article>
+          <article class="exec-status-card critical">
+            <span>ต้องปรับปรุง</span>
+            <strong id="exec-critical-percent">-</strong>
+            <small id="exec-critical-count">-</small>
+          </article>
+          <article class="exec-status-card neutral">
+            <span>ไม่มีข้อมูล</span>
+            <strong id="exec-nodata-percent">-</strong>
+            <small id="exec-nodata-count">-</small>
+          </article>
+        </div>
+
+        <div class="exec-grid-main">
+          <article class="exec-panel status-overview">
+            <div class="exec-panel-title">
+              <h3>สถานะภาพรวม</h3>
+              <span>Donut</span>
+            </div>
+            <div id="exec-status-donut" class="exec-chart"></div>
+          </article>
+
+          <article class="exec-panel">
+            <div class="exec-panel-title">
+              <h3>แนวโน้ม 3 ปีล่าสุด</h3>
+              <span>Trend</span>
+            </div>
+            <div id="exec-trend-chart" class="exec-chart"></div>
+          </article>
+
+          <article class="exec-panel">
+            <div class="exec-panel-title">
+              <h3>เปรียบเทียบรายกลุ่ม</h3>
+              <span>Actual vs Target</span>
+            </div>
+            <div id="exec-category-chart" class="exec-chart"></div>
+          </article>
+        </div>
+
+        <div class="exec-grid-secondary">
+          <article class="exec-panel">
+            <div class="exec-panel-title">
+              <h3>Top / Bottom Ranking</h3>
+              <span>Best & Priority</span>
+            </div>
+            <div id="exec-ranking-panel" class="exec-ranking-panel"></div>
+          </article>
+
+          <article class="exec-panel">
+            <div class="exec-panel-title">
+              <h3>ตัวชี้วัดปัญหาสำคัญ</h3>
+              <span>Critical Indicators</span>
+            </div>
+            <div id="exec-critical-indicators" class="exec-chart"></div>
+          </article>
+
+          <article class="exec-panel">
+            <div class="exec-panel-title">
+              <h3>สัดส่วนระดับผลการประเมิน</h3>
+              <span>Composition</span>
+            </div>
+            <div id="exec-composition-chart" class="exec-chart"></div>
+          </article>
+        </div>
+
+        <div class="exec-grid-tertiary">
+          <article class="exec-panel">
+            <div class="exec-panel-title">
+              <h3>Priority Group Analysis</h3>
+              <span id="exec-geo-mode">Ranked Bar</span>
+            </div>
+            <div id="exec-geo-analysis" class="exec-chart"></div>
+          </article>
+
+          <article class="exec-panel executive-alerts">
+            <div class="exec-panel-title">
+              <h3>ประเด็นเร่งด่วนและข้อเสนอเชิงนโยบาย</h3>
+              <span>Alerts & Actions</span>
+            </div>
+            <div id="exec-alerts" class="exec-alert-list"></div>
+          </article>
+        </div>
+
+        <div class="exec-validation compact-validation">
+          <h3>Data Validation Summary</h3>
+          <div id="exec-validation-list" class="validation-list"></div>
+        </div>
+      </section>
+
+      <section class="kpi-grid secondary-kpi">
+        <article class="kpi-card surface teal">
+          <span class="kpi-label">ระเบียนทั้งหมดในตัวกรอง</span>
+          <strong id="kpi-total" class="kpi-value">-</strong>
+        </article>
+        <article class="kpi-card surface blue">
+          <span class="kpi-label">อัตราผ่าน</span>
+          <strong id="kpi-pass-rate" class="kpi-value">-</strong>
+        </article>
+        <article class="kpi-card surface amber alert">
+          <span class="kpi-label">จำนวนระดับ D / ควรเร่งทบทวน</span>
+          <strong id="kpi-quality-d" class="kpi-value">-</strong>
+        </article>
+      </section>
+
+      <section class="surface policy-action-card is-hidden" id="policy-action" aria-hidden="true">
+        <div class="chart-header">
+          <div>
+            <h2>Policy Action Dashboard</h2>
+            <p>สรุปมุมมองสำหรับผู้บริหารระดับนโยบาย เพื่อช่วยจัดลำดับพื้นที่ กลุ่มเป้าหมาย และมาตรการยกระดับคุณภาพภายใต้ตัวกรองปัจจุบัน</p>
+          </div>
+          <div class="chart-accent amber">Action View</div>
+        </div>
+
+        <div class="policy-metrics">
+          <article class="policy-metric">
+            <span>ควรเร่งดูแล</span>
+            <strong id="policy-risk-centers">-</strong>
+            <small>ระดับ D หรือ ImproveScore สูงมาก</small>
+          </article>
+          <article class="policy-metric">
+            <span>ควรเฝ้าระวัง</span>
+            <strong id="policy-watch-centers">-</strong>
+            <small>ระดับ C หรือมีจำนวนข้อที่ต้องปรับปรุงระดับกลาง</small>
+          </article>
+          <article class="policy-metric">
+            <span>ค่าเฉลี่ยจำนวนข้อที่ต้องปรับปรุง</span>
+            <strong id="policy-avg-score">-</strong>
+            <small>ใช้ประกอบการวางแผนทรัพยากร</small>
+          </article>
+          <article class="policy-metric">
+            <span>มาตรการที่ควรให้ความสำคัญ</span>
+            <strong id="policy-resource-theme">-</strong>
+            <small>คำนวณจากมาตรฐานที่พบมากสุด</small>
+          </article>
+        </div>
+
+        <div class="policy-grid">
+          <article class="policy-panel">
+            <h3>พื้นที่/กลุ่มเป้าหมายที่ควรจัดลำดับ</h3>
+            <div id="policy-priority-list" class="policy-list"></div>
+          </article>
+          <article class="policy-panel">
+            <h3>ประเด็นมาตรฐานที่ควรลงมือก่อน</h3>
+            <div id="policy-issue-list" class="policy-list"></div>
+          </article>
+          <article class="policy-panel">
+            <h3>ข้อเสนอจัดสรรทรัพยากร</h3>
+            <div id="policy-action-list" class="policy-list"></div>
+          </article>
+        </div>
+
+        <p class="policy-note">หมายเหตุ: ส่วนนี้เป็นเครื่องมือช่วยคัดกรอง/จัดลำดับเชิงนโยบาย ไม่ใช่ผลรับรองอย่างเป็นทางการ และยังคงใช้ center_code_anon เพื่อคุ้มครองข้อมูลส่วนบุคคล</p>
+      </section>
+
+      <section class="viz-grid">
+        <article class="surface chart-card" id="ranking">
+          <div class="chart-header">
+            <div>
+              <h2>อันดับสถานพัฒนา/โรงเรียน</h2>
+              <p>เรียงตามจำนวนข้อที่ต้องปรับปรุงจากมากไปน้อย โดยใช้ center_code_anon</p>
+            </div>
+            <div class="chart-accent teal">Priority View</div>
+          </div>
+          <div id="ranking-chart" class="chart-area compact-bars"></div>
+        </article>
+
+        <article class="surface chart-card" id="trend">
+          <div class="chart-header">
+            <div>
+              <h2>แนวโน้มรายปี</h2>
+              <p>เปรียบเทียบอัตราผ่านกับสัดส่วนระดับ D ภายใต้ตัวกรองปัจจุบัน</p>
+            </div>
+            <div class="chart-accent blue">Flow Trend</div>
+          </div>
+          <div id="yearly-chart" class="chart-area line-focus"></div>
+        </article>
+      </section>
+
+      <section class="surface school-timeline-card analyst-drilldown" id="school-timeline">
+        <div class="chart-header">
+          <div>
+            <h2>ผลการประเมินรายโรงเรียน</h2>
+            <p>ค้นหาชื่อแฝงโรงเรียนเพื่อดูผลการประเมินรายปีและเทียบแนวโน้ม A/B/C/D ของโรงเรียนนั้น</p>
+          </div>
+          <div class="chart-accent teal">School Timeline</div>
+        </div>
+
+        <div class="school-toolbar">
+          <div class="search-block">
+            <label for="school-search">ค้นหาชื่อแฝงโรงเรียน</label>
+            <input id="school-search" type="search" list="school-options" placeholder="พิมพ์ชื่อแฝงโรงเรียน..." autocomplete="off">
+            <datalist id="school-options"></datalist>
+          </div>
+          <div class="selected-school-summary">
+            <span>โรงเรียนที่เลือก</span>
+            <strong id="selected-school-name">-</strong>
+            <small id="selected-school-code">-</small>
+          </div>
+        </div>
+
+        <div id="school-timeline-chart" class="chart-area school-timeline-area"></div>
+        <div id="school-timeline-summary" class="school-timeline-summary"></div>
+      </section>
+
+      <section class="surface insight-card" id="insight">
+        <div class="chart-header">
+          <div>
+            <h2>มาตรฐานที่พบมากสุดในข้อมูลที่เลือก</h2>
+            <p>ใช้ indicator_* เพื่อดูว่า “จำนวนข้อที่ต้องปรับปรุง” กระจุกที่มาตรฐานใด</p>
+          </div>
+          <div class="chart-accent amber">Hot Spots</div>
+        </div>
+        <div id="top-indicators" class="top-indicators"></div>
+      </section>
+
+      <section class="surface table-card" id="table">
+        <div class="chart-header">
+          <div>
+            <h2>ตารางรายการติดตาม</h2>
+            <p>เครื่องมือนี้ใช้เพื่อช่วยคัดกรองและจัดลำดับการติดตาม ไม่ใช่ผลรับรองอย่างเป็นทางการ</p>
+          </div>
+          <div class="chart-accent slate">Top 40</div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>center_code_anon</th>
+                <th>ผลประเมิน</th>
+                <th>จำนวนข้อที่ต้องปรับปรุง</th>
+                <th>ระดับ Quality_level</th>
+                <th>มาตรฐานที่พบมากสุด</th>
+              </tr>
+            </thead>
+            <tbody id="tracking-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
