@@ -1531,6 +1531,30 @@ td strong {
   color: var(--level-d-deep);
 }
 
+.note-card strong,
+.note-card small,
+.exec-status-card strong,
+.exec-status-card span,
+.exec-status-card small,
+.limit-button,
+.pill {
+  white-space: nowrap;
+}
+
+.pill {
+  justify-content: center;
+  min-width: 58px;
+  line-height: 1.2;
+}
+
+th:nth-child(2),
+td:nth-child(2),
+th:nth-child(4),
+td:nth-child(4) {
+  width: 118px;
+  white-space: nowrap;
+}
+
 @media (max-width: 1240px) {
   .dashboard-layout {
     grid-template-columns: 1fr;
