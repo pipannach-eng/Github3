@@ -1,3 +1,4 @@
+import base64
 from pathlib import Path
 
 import streamlit as st
@@ -29,9 +30,21 @@ def safe_script(js_text: str) -> str:
     return js_text.replace("</script>", "<\\/script>")
 
 
+def inline_asset(css_text: str, asset_path: str) -> str:
+    file_path = base_dir / asset_path
+    if not file_path.exists():
+        return css_text
+
+    encoded = base64.b64encode(file_path.read_bytes()).decode("ascii")
+    data_uri = f"data:image/png;base64,{encoded}"
+    return css_text.replace(f'url("./{asset_path}")', f"url('{data_uri}')")
+
+
 try:
     html = read_text_file("index.html")
     css = read_text_file("styles.css")
+    css = inline_asset(css, "assets/ecd-dashboard-animal-mascot.png")
+    css = inline_asset(css, "assets/ecd-dashboard-mascot.png")
     data_js = safe_script(read_text_file("data.js"))
     app_js = safe_script(read_text_file("app.js"))
 
