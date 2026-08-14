@@ -96,6 +96,7 @@
     topIndicators: document.getElementById("top-indicators"),
     trackingTableBody: document.getElementById("tracking-table-body"),
     tableLimitButtons: document.querySelectorAll("[data-table-limit]"),
+    navItems: document.querySelectorAll(".nav-item[href^='#']"),
   };
 
   function formatNumber(value) {
@@ -1167,7 +1168,53 @@
     renderTable(filteredRecords, frequencyMap);
   }
 
+  function setActiveNav(hash) {
+    elements.navItems.forEach((item) => {
+      item.classList.toggle("active", item.getAttribute("href") === hash);
+    });
+  }
+
+  function scrollToSection(hash, smooth = true) {
+    const target = document.querySelector(hash);
+    if (!target) return;
+
+    target.scrollIntoView({
+      behavior: smooth ? "smooth" : "auto",
+      block: "start",
+    });
+    setActiveNav(hash);
+    if (window.history?.replaceState) {
+      window.history.replaceState(null, "", hash);
+    }
+  }
+
+  function updateActiveNavFromScroll() {
+    const sections = [...elements.navItems]
+      .map((item) => document.querySelector(item.getAttribute("href")))
+      .filter(Boolean);
+
+    const current = sections.reduce((active, section) => {
+      const rect = section.getBoundingClientRect();
+      return rect.top <= 140 ? section : active;
+    }, sections[0]);
+
+    if (current?.id) {
+      setActiveNav(`#${current.id}`);
+    }
+  }
+
   function wireEvents() {
+    elements.navItems.forEach((item) => {
+      item.addEventListener("click", (event) => {
+        const hash = item.getAttribute("href");
+        if (!hash || !hash.startsWith("#")) return;
+        event.preventDefault();
+        scrollToSection(hash);
+      });
+    });
+
+    window.addEventListener("scroll", updateActiveNavFromScroll, { passive: true });
+
     elements.resetYears.addEventListener("click", () => {
       state.selectedYears = new Set(years);
       render();
@@ -1227,4 +1274,7 @@
   renderHeaderMeta();
   wireEvents();
   render();
+  if (window.location.hash) {
+    requestAnimationFrame(() => scrollToSection(window.location.hash, false));
+  }
 })();
