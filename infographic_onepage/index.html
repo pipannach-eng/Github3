@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Infographic: ยกระดับคุณภาพสถานพัฒนาเด็กปฐมวัย</title>
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+
+    :root {
+      --ink: #243043;
+      --muted: #66758b;
+      --cream: #fff8ec;
+      --mint: #bfead9;
+      --mint-deep: #42a889;
+      --peach: #ffb18f;
+      --coral: #f47f73;
+      --butter: #ffe49a;
+      --sky: #b9ddff;
+      --blue: #4d88d8;
+      --paper: rgba(255, 255, 255, 0.78);
+      --line: rgba(36, 48, 67, 0.13);
+      --shadow: 0 18px 36px rgba(70, 61, 44, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #f5efe8;
+      color: var(--ink);
+      font-family: "Noto Sans Thai", "IBM Plex Sans Thai", "Leelawadee UI", "Segoe UI", sans-serif;
+    }
+
+    .sheet {
+      position: relative;
+      width: 297mm;
+      min-height: 210mm;
+      overflow: hidden;
+      padding: 16mm 17mm 13mm;
+      background:
+        radial-gradient(circle at 10% 15%, rgba(255, 228, 154, 0.82), transparent 24%),
+        radial-gradient(circle at 86% 12%, rgba(191, 234, 217, 0.9), transparent 25%),
+        radial-gradient(circle at 76% 88%, rgba(255, 177, 143, 0.62), transparent 26%),
+        linear-gradient(135deg, #fff8ec 0%, #eefaf1 53%, #fff0df 100%);
+    }
+
+    .sheet::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(36, 48, 67, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(36, 48, 67, 0.055) 1px, transparent 1px);
+      background-size: 30px 30px;
+      mask-image: radial-gradient(circle at center, black 0%, transparent 74%);
+      pointer-events: none;
+    }
+
+    .confetti {
+      position: absolute;
+      border-radius: 22px;
+      opacity: 0.78;
+    }
+
+    .confetti.one {
+      width: 110px;
+      height: 110px;
+      right: 18mm;
+      top: 13mm;
+      background: conic-gradient(from 90deg, var(--mint) 0 25%, var(--butter) 0 50%, var(--peach) 0 75%, #ffffff 0);
+      transform: rotate(12deg);
+      filter: blur(0.2px);
+    }
+
+    .confetti.two {
+      width: 92px;
+      height: 92px;
+      left: 8mm;
+      bottom: 15mm;
+      background: conic-gradient(from 45deg, var(--sky) 0 25%, #ffffff 0 50%, var(--peach) 0 75%, var(--mint) 0);
+      transform: rotate(-18deg);
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 13px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(77, 136, 216, 0.1);
+      color: #315f9f;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 760px;
+      font-size: 39px;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+    }
+
+    .lede {
+      margin: 9px 0 0;
+      max-width: 780px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+      font-weight: 650;
+    }
+
+    .mascot-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.68);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .mascot {
+      width: 92px;
+      height: 92px;
+    }
+
+    .mascot-card strong {
+      display: block;
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .mascot-card span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .stat {
+      min-height: 86px;
+      padding: 12px;
+      border-radius: 24px;
+      background: var(--paper);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 12px 26px rgba(70, 61, 44, 0.1);
+    }
+
+    .stat b {
+      display: block;
+      font-size: 29px;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.32;
+      font-weight: 750;
+    }
+
+    .main-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.1fr 0.95fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .panel {
+      padding: 14px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.86);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .panel h2 {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 11px;
+      font-size: 21px;
+      line-height: 1.2;
+    }
+
+    .tag {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 14px;
+      background: var(--butter);
+      font-size: 18px;
+    }
+
+    .flow {
+      display: grid;
+      gap: 9px;
+    }
+
+    .flow-step {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 10px;
+      align-items: center;
+      padding: 10px;
+      border-radius: 20px;
+      background: rgba(255, 248, 236, 0.84);
+      border: 1px solid var(--line);
+    }
+
+    .flow-icon {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 17px;
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 20px;
+      background: linear-gradient(135deg, var(--blue), #7ab6f5);
+    }
+
+    .flow-step:nth-child(2) .flow-icon {
+      background: linear-gradient(135deg, var(--coral), var(--peach));
+    }
+
+    .flow-step:nth-child(3) .flow-icon {
+      background: linear-gradient(135deg, var(--mint-deep), #78d9b8);
+    }
+
+    .flow-step:nth-child(4) .flow-icon {
+      background: linear-gradient(135deg, #f3b341, var(--butter));
+      color: #5d4521;
+    }
+
+    .flow-step b {
+      display: block;
+      font-size: 15px;
+    }
+
+    .flow-step span {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.32;
+      font-weight: 650;
+    }
+
+    .problem-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .problem {
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 9px;
+      align-items: center;
+      padding: 9px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid var(--line);
+    }
+
+    .problem-icon {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 17px;
+      font-size: 22px;
+      background: #fff1c9;
+    }
+
+    .problem b {
+      display: block;
+      font-size: 14px;
+      line-height: 1.28;
+    }
+
+    .problem small {
+      display: block;
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 11.5px;
+      line-height: 1.26;
+      font-weight: 650;
+    }
+
+    .count {
+      min-width: 54px;
+      padding: 7px 8px;
+      border-radius: 14px;
+      text-align: center;
+      color: #ffffff;
+      background: var(--coral);
+      font-size: 18px;
+      font-weight: 900;
+      box-shadow: inset 0 -2px 0 rgba(0, 0, 0, 0.08);
+    }
+
+    .count.mint {
+      background: var(--mint-deep);
+    }
+
+    .count.gold {
+      color: #5d4521;
+      background: #f5c953;
+    }
+
+    .blueprint {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+    }
+
+    .action {
+      min-height: 112px;
+      padding: 12px;
+      border-radius: 22px;
+      background: rgba(255, 248, 236, 0.82);
+      border: 1px solid var(--line);
+    }
+
+    .action:nth-child(2),
+    .action:nth-child(4) {
+      background: rgba(230, 249, 240, 0.78);
+    }
+
+    .action b {
+      display: block;
+      font-size: 15px;
+      line-height: 1.28;
+    }
+
+    .action p {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.35;
+      font-weight: 650;
+    }
+
+    .grade-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-top: 11px;
+    }
+
+    .grade {
+      padding: 9px 7px;
+      border-radius: 18px;
+      text-align: center;
+      color: #ffffff;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+
+    .grade small {
+      display: block;
+      margin-top: 3px;
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .grade.a { background: #55bd91; }
+    .grade.b { background: #64a8e8; }
+    .grade.c { background: #f5c953; color: #59451f; }
+    .grade.d { background: #f47f73; }
+
+    .footer {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 12px 16px;
+      border-radius: 24px;
+      background: rgba(36, 48, 67, 0.88);
+      color: #ffffff;
+      box-shadow: 0 14px 30px rgba(36, 48, 67, 0.18);
+    }
+
+    .footer b {
+      color: var(--butter);
+    }
+
+    .footer p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.45;
+      font-weight: 650;
+    }
+
+    .source {
+      text-align: right;
+      color: rgba(255, 255, 255, 0.76);
+      font-size: 11px;
+      line-height: 1.35;
+      white-space: nowrap;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+
+      .sheet {
+        width: 297mm;
+        min-height: 210mm;
+      }
+    }
+
+    @media (max-width: 900px) {
+      body {
+        display: block;
+      }
+
+      .sheet {
+        width: 100%;
+        min-height: 100vh;
+        padding: 22px;
+      }
+
+      .hero,
+      .main-grid,
+      .footer {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="sheet" aria-label="Infographic ยกระดับคุณภาพสถานพัฒนาเด็กปฐมวัย">
+    <span class="confetti one"></span>
+    <span class="confetti two"></span>
+
+    <section class="content">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">ข้อมูลนำทางนโยบายปฐมวัย</p>
+          <h1>ยกระดับคุณภาพสถานพัฒนาเด็กปฐมวัย ตามมาตรฐานชาติ</h1>
+          <p class="lede">
+            เปลี่ยนรายงานผลย้อนหลังให้เป็นระบบคาดการณ์ล่วงหน้า เพื่อช่วยคัดกรองความเสี่ยง
+            จัดลำดับการช่วยเหลือ และสนับสนุนให้เด็กปฐมวัยได้รับการดูแลอย่างเท่าเทียม
+          </p>
+        </div>
+
+        <aside class="mascot-card">
+          <svg class="mascot" viewBox="0 0 120 120" role="img" aria-label="กระต่ายนักวิเคราะห์ข้อมูล">
+            <defs>
+              <linearGradient id="ear" x1="0" x2="1">
+                <stop offset="0" stop-color="#ffd5c2"></stop>
+                <stop offset="1" stop-color="#bfead9"></stop>
+              </linearGradient>
+            </defs>
+            <ellipse cx="42" cy="33" rx="13" ry="30" fill="#fff" stroke="#243043" stroke-width="3" transform="rotate(-15 42 33)"></ellipse>
+            <ellipse cx="78" cy="33" rx="13" ry="30" fill="#fff" stroke="#243043" stroke-width="3" transform="rotate(15 78 33)"></ellipse>
+            <ellipse cx="42" cy="36" rx="6" ry="20" fill="url(#ear)" opacity="0.9" transform="rotate(-15 42 36)"></ellipse>
+            <ellipse cx="78" cy="36" rx="6" ry="20" fill="url(#ear)" opacity="0.9" transform="rotate(15 78 36)"></ellipse>
+            <circle cx="60" cy="68" r="38" fill="#fff" stroke="#243043" stroke-width="3"></circle>
+            <circle cx="47" cy="62" r="4" fill="#243043"></circle>
+            <circle cx="73" cy="62" r="4" fill="#243043"></circle>
+            <path d="M56 72 Q60 77 64 72" fill="none" stroke="#243043" stroke-width="3" stroke-linecap="round"></path>
+            <circle cx="34" cy="74" r="7" fill="#ffd5c2" opacity="0.9"></circle>
+            <circle cx="86" cy="74" r="7" fill="#ffd5c2" opacity="0.9"></circle>
+            <path d="M31 98 Q60 108 89 98" fill="none" stroke="#42a889" stroke-width="8" stroke-linecap="round"></path>
+          </svg>
+          <div>
+            <strong>มองปัญหาเร็วขึ้น ช่วยเหลือได้ตรงจุดขึ้น</strong>
+            <span>ระบบนี้เป็นเครื่องมือช่วยจัดลำดับ ไม่ใช่ผลรับรองอย่างเป็นทางการ</span>
+          </div>
+        </aside>
+      </header>
+
+      <section class="stats" aria-label="ตัวเลขสำคัญจากสไลด์">
+        <div class="stat"><b>75</b><span>ข้อประเมินมาตรฐานชาติ รวม 3 ด้านหลัก</span></div>
+        <div class="stat"><b>6 ปี</b><span>ฐานข้อมูลปี 2563-2568 สำหรับเรียนรู้แนวโน้ม</span></div>
+        <div class="stat"><b>220+</b><span>สถานพัฒนาเด็กปฐมวัยในกรณีศึกษา ตชด.</span></div>
+        <div class="stat"><b>49.71%</b><span>อัตราทำแบบประเมินจากฐานข้อมูลกลาง</span></div>
+        <div class="stat"><b>2 เป้าหมาย</b><span>พยากรณ์ผ่าน/ไม่ผ่าน และระดับ A/B/C/D</span></div>
+      </section>
+
+      <section class="main-grid">
+        <article class="panel">
+          <h2><span class="tag">🧭</span>จากรายงานสู่การคาดการณ์</h2>
+          <div class="flow">
+            <div class="flow-step">
+              <span class="flow-icon">1</span>
+              <div><b>Hindsight</b><span>รายงานเดิมบอกผลย้อนหลัง แยกตามสังกัด/พื้นที่</span></div>
+            </div>
+            <div class="flow-step">
+              <span class="flow-icon">2</span>
+              <div><b>Data + ML</b><span>ใช้รายการมาตรฐานและจำนวนข้อที่ต้องปรับปรุงเป็นสัญญาณ</span></div>
+            </div>
+            <div class="flow-step">
+              <span class="flow-icon">3</span>
+              <div><b>Foresight</b><span>คาดการณ์กลุ่มเสี่ยงตกเกณฑ์และระดับคุณภาพล่วงหน้า</span></div>
+            </div>
+            <div class="flow-step">
+              <span class="flow-icon">4</span>
+              <div><b>Action</b><span>จัดสรรงบประมาณ บุคลากร และการช่วยเหลือได้ตรงจุด</span></div>
+            </div>
+          </div>
+          <div class="grade-row" aria-label="ระดับคุณภาพ">
+            <div class="grade a">A<small>ดีมาก</small></div>
+            <div class="grade b">B<small>ดี</small></div>
+            <div class="grade c">C<small>ผ่านขั้นต้น</small></div>
+            <div class="grade d">D<small>ต้องปรับปรุง</small></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h2><span class="tag">🔎</span>6 สภาพปัญหาสำคัญที่ควรเร่งแก้ไข</h2>
+          <div class="problem-list">
+            <div class="problem">
+              <span class="problem-icon">🎓</span>
+              <div><b>ครู/ผู้ดูแลเด็กขาดวุฒิการศึกษาหรือคุณสมบัติที่เหมาะสม</b><small>ข้อ 1.2.3 เป็นปัญหาอันดับ 1</small></div>
+              <span class="count">222</span>
+            </div>
+            <div class="problem">
+              <span class="problem-icon">🦷</span>
+              <div><b>ปัญหาสุขภาพช่องปากและฟันผุของเด็ก</b><small>ข้อ 3.1.3ข ต้องบูรณาการระบบสุขภาพเชิงรุก</small></div>
+              <span class="count mint">83</span>
+            </div>
+            <div class="problem">
+              <span class="problem-icon">🧮</span>
+              <div><b>ขาดทักษะพื้นฐานทางคณิตศาสตร์ มิติสัมพันธ์ และเวลา</b><small>ข้อ 3.5.2ข เชื่อมกับการเรียนรู้ผ่านการเล่น</small></div>
+              <span class="count gold">53</span>
+            </div>
+            <div class="problem">
+              <span class="problem-icon">🛡️</span>
+              <div><b>ขาดระบบความปลอดภัย แผนรับเหตุฉุกเฉิน และป้องกันภัยพิบัติ</b><small>ข้อ 1.3.8 ต้องซ้อมแผนและมีอุปกรณ์ตามความเสี่ยง</small></div>
+              <span class="count">52</span>
+            </div>
+            <div class="problem">
+              <span class="problem-icon">💬</span>
+              <div><b>ข้อจำกัดด้านภาษาไทย การสื่อสาร การฟัง/พูด/เล่าเรื่อง</b><small>ข้อ 3.6.4ข และ 3.6.1ข รวม 98 ระเบียน</small></div>
+              <span class="count mint">98</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h2><span class="tag">🌱</span>Action Blueprint</h2>
+          <div class="blueprint">
+            <div class="action">
+              <b>1. Up-skill / Re-skill ครู</b>
+              <p>ทำ MOU กับสถาบันอุดมศึกษา เปิดหลักสูตรเทียบโอนประสบการณ์ และวาง Career Path ให้ครู ตชด.</p>
+            </div>
+            <div class="action">
+              <b>2. สุขภาพเชิงรุก</b>
+              <p>โมเดล “ศูนย์เด็กเล็กฟันดี ไร้ฟันผุ” ประสาน รพ.สต. ตรวจทุกไตรมาส และลดปัจจัยเสี่ยงอาหารหวาน</p>
+            </div>
+            <div class="action">
+              <b>3. Play-Based Learning</b>
+              <p>จัดสรรสื่อการเรียนรู้เชิงรูปธรรม และอบรมครูให้เสริมทักษะคณิตศาสตร์กับภาษาในกิจกรรมเล่น</p>
+            </div>
+            <div class="action">
+              <b>4. ความปลอดภัยและแผนเผชิญเหตุ</b>
+              <p>ซ้อมแผนอพยพร่วมกับสถานีตำรวจท้องที่ปีละ 2 ครั้ง และสนับสนุนอุปกรณ์ป้องกันตามความเสี่ยงพื้นที่</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <footer class="footer">
+        <p>
+          <b>สาระสำคัญ:</b> การลงทุนในเด็กปฐมวัยให้ผลตอบแทนสูง และข้อมูลเชิงพยากรณ์ช่วยเปลี่ยนการแก้ปัญหา
+          จาก “รอเห็นผลตกเกณฑ์” เป็น “ช่วยก่อนเกิดความเสี่ยง”
+        </p>
+        <div class="source">
+          สรุปจากไฟล์นำเสนอ “ปฐมวัยไทยแลนด์”<br>
+          กรณีศึกษาสังกัดสำนักงานตำรวจแห่งชาติ
+        </div>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+<dimension ref="A1:C7"/>
+<sheetViews><sheetView workbookViewId="0"/></sheetViews>
+<sheetFormatPr defaultRowHeight="15"/>
+<sheetData>
+<row r="1"><c r="A1" t="inlineStr"><is><t xml:space="preserve">year</t></is></c><c r="B1" t="inlineStr"><is><t xml:space="preserve">source_file</t></is></c><c r="C1" t="inlineStr"><is><t xml:space="preserve">center_row_count</t></is></c></row>
+<row r="2"><c r="A2"><v>2563</v></c><c r="B2" t="inlineStr"><is><t xml:space="preserve">7. 2563 REP004-IMPROVEMENT 12 - ตารางสรุปรายงานมาตรฐานแต่ละด้าน พร้อมจำนวนข้อที่ต้องปรับปรุง และจำนวนเด็กที่ผ่านเกณฑ์.xls</t></is></c><c r="C2"><v>193</v></c></row>
+<row r="3"><c r="A3"><v>2564</v></c><c r="B3" t="inlineStr"><is><t xml:space="preserve">8. 2564 REP004-IMPROVEMENT 12 - ตารางสรุปรายงานมาตรฐานแต่ละด้าน พร้อมจำนวนข้อที่ต้องปรับปรุง และจำนวนเด็กที่ผ่านเกณฑ์.xls</t></is></c><c r="C3"><v>155</v></c></row>
+<row r="4"><c r="A4"><v>2565</v></c><c r="B4" t="inlineStr"><is><t xml:space="preserve">9. 2565 REP004-IMPROVEMENT 12 - ตารางสรุปรายงานมาตรฐานแต่ละด้าน พร้อมจำนวนข้อที่ต้องปรับปรุง และจำนวนเด็กที่ผ่านเกณฑ์.xls</t></is></c><c r="C4"><v>155</v></c></row>
+<row r="5"><c r="A5"><v>2566</v></c><c r="B5" t="inlineStr"><is><t xml:space="preserve">10. 2566 REP004-IMPROVEMENT 12 - ตารางสรุปรายงานมาตรฐานแต่ละด้าน พร้อมจำนวนข้อที่ต้องปรับปรุง และจำนวนเด็กที่ผ่านเกณฑ์.xls</t></is></c><c r="C5"><v>196</v></c></row>
+<row r="6"><c r="A6"><v>2567</v></c><c r="B6" t="inlineStr"><is><t xml:space="preserve">11. 2567 REP004-IMPROVEMENT 12 - ตารางสรุปรายงานมาตรฐานแต่ละด้าน พร้อมจำนวนข้อที่ต้องปรับปรุง และจำนวนเด็กที่ผ่านเกณฑ์.xls</t></is></c><c r="C6"><v>181</v></c></row>
+<row r="7"><c r="A7"><v>2568</v></c><c r="B7" t="inlineStr"><is><t xml:space="preserve">12. 2568 REP004-IMPROVEMENT 12 - ตารางสรุปรายงานมาตรฐานแต่ละด้าน พร้อมจำนวนข้อที่ต้องปรับปรุง และจำนวนเด็กที่ผ่านเกณฑ์.xls</t></is></c><c r="C7"><v>174</v></c></row>
+</sheetData>
+</worksheet>
