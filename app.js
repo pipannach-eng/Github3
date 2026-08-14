@@ -42,6 +42,7 @@
     selectedYears: new Set(years),
     selectedQuality: new Set(qualityLevels),
     selectedCenterCode: schoolOptions[0]?.center_code_anon || "",
+    tableLimit: 5,
   };
 
   const elements = {
@@ -94,6 +95,7 @@
     schoolTimelineSummary: document.getElementById("school-timeline-summary"),
     topIndicators: document.getElementById("top-indicators"),
     trackingTableBody: document.getElementById("tracking-table-body"),
+    tableLimitButtons: document.querySelectorAll("[data-table-limit]"),
   };
 
   function formatNumber(value) {
@@ -1124,10 +1126,10 @@
   }
 
   function renderTable(filteredRecords, frequencyMap) {
-    const rows = filteredRecords
+    const sortedRows = filteredRecords
       .slice()
-      .sort((a, b) => b.ImproveScore - a.ImproveScore || a.center_code_anon.localeCompare(b.center_code_anon))
-      .slice(0, 5);
+      .sort((a, b) => b.ImproveScore - a.ImproveScore || a.center_code_anon.localeCompare(b.center_code_anon));
+    const rows = state.tableLimit === "all" ? sortedRows : sortedRows.slice(0, state.tableLimit);
 
     elements.trackingTableBody.innerHTML = "";
     if (!rows.length) {
@@ -1174,6 +1176,17 @@
     elements.resetQuality.addEventListener("click", () => {
       state.selectedQuality = new Set(qualityLevels);
       render();
+    });
+
+    elements.tableLimitButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const value = button.dataset.tableLimit;
+        state.tableLimit = value === "all" ? "all" : Number(value);
+        elements.tableLimitButtons.forEach((item) => {
+          item.classList.toggle("active", item === button);
+        });
+        render();
+      });
     });
 
     const applySchoolSearch = () => {

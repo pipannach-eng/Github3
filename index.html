@@ -345,7 +345,11 @@
             <h2>ตารางรายการติดตาม</h2>
             <p>เครื่องมือนี้ใช้เพื่อช่วยคัดกรองและจัดลำดับการติดตาม ไม่ใช่ผลรับรองอย่างเป็นทางการ</p>
           </div>
-          <div class="chart-accent slate">Top 5</div>
+          <div class="table-limit-toggle" role="group" aria-label="เลือกจำนวนรายการติดตาม">
+            <button class="limit-button active" type="button" data-table-limit="5">Top 5</button>
+            <button class="limit-button" type="button" data-table-limit="10">Top 10</button>
+            <button class="limit-button" type="button" data-table-limit="all">ทั้งหมด</button>
+          </div>
         </div>
         <div class="table-wrap">
           <table>

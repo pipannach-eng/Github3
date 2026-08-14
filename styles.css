@@ -1135,6 +1135,36 @@ body {
   color: #638194;
 }
 
+.table-limit-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px;
+  border-radius: 999px;
+  background: #edf7f8;
+  border: 1px solid rgba(215, 233, 238, 0.9);
+}
+
+.limit-button {
+  border: 0;
+  border-radius: 999px;
+  padding: 7px 11px;
+  color: #638194;
+  background: transparent;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease, box-shadow 160ms ease;
+}
+
+.limit-button:hover,
+.limit-button.active {
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--teal-deep), var(--teal));
+  box-shadow: 0 8px 18px rgba(13, 130, 136, 0.18);
+}
+
 .chart-area {
   margin-top: 18px;
   min-height: 360px;
