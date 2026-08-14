@@ -48,4 +48,4 @@ st.markdown(
 # This keeps colors, CSS backgrounds, images, and animations closest to local HTML.
 dashboard_url = "https://raw.githack.com/pipannach-eng/Github3/streamlit-original-ui/index.html"
 
-components.iframe(dashboard_url, height=9000, scrolling=True)
+components.iframe(dashboard_url, height=1080, scrolling=True)
