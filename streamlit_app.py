@@ -17,7 +17,21 @@ st.markdown(
       }
 
       header[data-testid="stHeader"] {
-        background: rgba(255, 255, 255, 0.96) !important;
+        display: none !important;
+        height: 0 !important;
+      }
+
+      div[data-testid="stToolbar"],
+      div[data-testid="stDecoration"],
+      #MainMenu,
+      footer {
+        display: none !important;
+        visibility: hidden !important;
+        height: 0 !important;
+      }
+
+      section.main > div {
+        padding-top: 0 !important;
       }
 
       iframe {
