@@ -11,22 +11,45 @@ st.set_page_config(
 
 base_dir = Path(__file__).parent
 
-html = (base_dir / "index.html").read_text(encoding="utf-8")
-css = (base_dir / "styles.css").read_text(encoding="utf-8")
-data_js = (base_dir / "data.js").read_text(encoding="utf-8")
-app_js = (base_dir / "app.js").read_text(encoding="utf-8")
+required_files = ["index.html", "styles.css", "data.js", "app.js"]
+missing_files = [name for name in required_files if not (base_dir / name).exists()]
 
-html = html.replace(
-    '<link rel="stylesheet" href="./styles.css">',
-    f"<style>{css}</style>",
-)
-html = html.replace(
-    '<script src="./data.js"></script>',
-    f"<script>{data_js}</script>",
-)
-html = html.replace(
-    '<script src="./app.js"></script>',
-    f"<script>{app_js}</script>",
-)
+if missing_files:
+    st.error("ไม่พบไฟล์ที่จำเป็นสำหรับ dashboard")
+    st.write(missing_files)
+    st.stop()
+
+
+def read_text_file(file_name: str) -> str:
+    return (base_dir / file_name).read_text(encoding="utf-8")
+
+
+def safe_script(js_text: str) -> str:
+    # Prevent embedded JS text from accidentally closing the surrounding script tag.
+    return js_text.replace("</script>", "<\\/script>")
+
+
+try:
+    html = read_text_file("index.html")
+    css = read_text_file("styles.css")
+    data_js = safe_script(read_text_file("data.js"))
+    app_js = safe_script(read_text_file("app.js"))
+
+    html = html.replace(
+        '<link rel="stylesheet" href="./styles.css">',
+        f"<style>{css}</style>",
+    )
+    html = html.replace(
+        '<script src="./data.js"></script>',
+        f"<script>{data_js}</script>",
+    )
+    html = html.replace(
+        '<script src="./app.js"></script>',
+        f"<script>{app_js}</script>",
+    )
+except Exception as exc:
+    st.error("โหลดไฟล์ dashboard ไม่สำเร็จ")
+    st.exception(exc)
+    st.stop()
 
 components.html(html, height=1900, scrolling=True)
