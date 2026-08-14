@@ -1127,7 +1127,7 @@
     const rows = filteredRecords
       .slice()
       .sort((a, b) => b.ImproveScore - a.ImproveScore || a.center_code_anon.localeCompare(b.center_code_anon))
-      .slice(0, 40);
+      .slice(0, 5);
 
     elements.trackingTableBody.innerHTML = "";
     if (!rows.length) {
