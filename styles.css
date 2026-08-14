@@ -75,9 +75,12 @@ body {
   display: flex;
   flex-direction: column;
   gap: 22px;
-  position: sticky;
+  position: fixed;
   top: 18px;
+  left: 18px;
+  width: 260px;
   height: calc(100vh - 36px);
+  z-index: 20;
 }
 
 .brand-block {
@@ -211,6 +214,7 @@ body {
 
 .page-shell {
   width: 100%;
+  grid-column: 2;
   padding: 6px 6px 40px 0;
 }
 
@@ -1534,6 +1538,7 @@ td strong {
 
   .sidebar {
     position: static;
+    width: auto;
     height: auto;
   }
 
